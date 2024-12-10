@@ -4,6 +4,7 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.model.Status;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,17 +22,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class base {
     public static DevTools devTools;
     public static WebDriver driver;
     public static Actions actions;
 
+    public String url = "https://www.foodsdictionary.co.il/";
+
     /** Debugging: */
     public void markOverlapElement(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid red'", element);
     }
 
+    /** Driver: */
+    public void initialDriver(){
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get(url);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+    }
+
+    public void quitDriver(){
+        driver.quit();
+    }
     /**General: */
     public String getCurrentURL() {
         return driver.getCurrentUrl().toLowerCase();
