@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+
+<!--    <test name="P1_HomePage">-->
+<!--        <classes>-->
+<!--            <class name="P1_sections" />-->
+<!--            <class name="P2_search" />-->
+<!--            <class name="P3_blog" />-->
+
+<!--            &lt;!&ndash; Add more class elements for other test classes &ndash;&gt;-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="P2_Products">-->
+<!--        <classes>-->
+<!--            <class name="P1_categories" />-->
+<!--            <class name="P2_filters" />-->
+<!--            <class name="P3_layout" />-->
+
+<!--            &lt;!&ndash; Add more class elements for other test classes &ndash;&gt;-->
+<!--        </classes>-->
+<!--    </test>-->
+
+
+
+</suite>
