@@ -23,8 +23,8 @@ import java.util.Random;
 import java.util.Set;
 
 public class base {
-    public static WebDriver driver;
     public static DevTools devTools;
+    public static WebDriver driver;
     public static Actions actions;
 
     /** Debugging: */
