@@ -1,7 +1,8 @@
 package P1_HomePage;
 
+import il.guyrob.foodsdictionary.Pages.ArticleProductPage;
 import il.guyrob.foodsdictionary.Pages.HomePage;
-import il.guyrob.foodsdictionary.Pages.ProductPage;
+import il.guyrob.foodsdictionary.Pages.RecipeProductPage;
 import il.guyrob.foodsdictionary.base;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -15,6 +16,7 @@ public class P1_sections extends base {
 
     // Data
     int subBannerProduct = 2;
+    int hotTopicProduct = 1;
 
     @BeforeMethod
     public void before() {
@@ -33,7 +35,7 @@ public class P1_sections extends base {
     @Test
     public void P1_banner() {
         allure_Log("Clicking main banner");
-        ProductPage productPage = homepage.mainBanner_click();
+        RecipeProductPage productPage = homepage.mainBanner_click();
         allure_Log("Scrolling down");
         scroll_Element(productPage.list_actions);
         sleep(1);
@@ -50,7 +52,7 @@ public class P1_sections extends base {
         List<WebElement> availableFoods =  homepage.subBanner_next();
         allure_LogAttachment("Sub Banner Clicked Next Button", "HomePage\\P1", "P2_subBannerProducts_nextBtn");
         allure_Log("Clicking on "+ subBannerProduct +" sub banner food");
-        ProductPage productPage = homepage.subBanner_click(availableFoods , subBannerProduct);
+        RecipeProductPage productPage = homepage.subBanner_click(availableFoods , subBannerProduct);
         allure_Log("Scrolling down");
         scroll_Element(productPage.list_actions);
         sleep(1);
@@ -58,8 +60,19 @@ public class P1_sections extends base {
         Assert.assertTrue(productPage.isBreadcrumbAppears(), "ERROR: Not showing the sub banner product page");
     }
 
+    @Test
     public void P3_hotTopics() {
-
+        allure_Log("Scrolling to hot topics");
+        homepage.scroll_Element(homepage.btn_hotTopics);
+        allure_Log("On hot topics clicking next button");
+        List<WebElement> availableArticles = homepage.hotTopics_next();
+        allure_LogAttachment("Hot Topics Clicked Next Button", "HomePage\\P1", "P3_hotTopics_nextBtn");
+        allure_Log("Clicking on "+ hotTopicProduct +" topic");
+        ArticleProductPage articleProductPage = homepage.hotTopics_click(availableArticles, hotTopicProduct);
+        allure_Log("Scrolling down");
+        scroll_Element(articleProductPage.list_actions);
+        allure_LogAttachment("Hot Topic Selected Product", "HomePage\\P1", "P3_hotTopics_article");
+//        Assert.assertTrue();
     }
 
     public void P4_appDownload(){
