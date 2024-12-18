@@ -18,10 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class base {
@@ -77,7 +74,7 @@ public class base {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public void screenShot(String folder, String name) {
+    private static void screenShot(String folder, String name) {
         try {
             File screenshotsFolder = new File("src\\ExtFiles\\screenShots\\" + folder);
             if (!screenshotsFolder.exists()) {
@@ -96,6 +93,7 @@ public class base {
         }
     }
 
+
     /** Javascript cmds */
     public WebElement getParentElement(WebElement son) {
         WebElement parentAnchor = (WebElement) ((JavascriptExecutor) driver).executeScript(
@@ -106,9 +104,9 @@ public class base {
 
 
     /** Actions: */
-    public void scroll_Element(WebElement ele){
+    public void scroll_Element(By eleBy){
         actions = new Actions(driver);
-        actions.scrollToElement(ele).perform();
+        actions.scrollToElement(driver.findElement(eleBy)).perform();
     }
 
     public void scroll_XY(int x, int y){
@@ -156,9 +154,10 @@ public class base {
     }
 
     public static void allure_LogAttachment(String info, String folder, String name) {
+        screenShot(folder, name);
+
         String imagePath = "src\\ExtFiles\\screenShots\\" + folder + "\\" + name + ".png";
         Path imageFilePath = Paths.get(imagePath);
-
         if (Files.exists(imageFilePath) && Files.isReadable(imageFilePath)) {
             try (InputStream imageStream = new FileInputStream(imageFilePath.toFile())) {
                 Allure.addAttachment(info, imageStream);
