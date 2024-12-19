@@ -1,5 +1,7 @@
 package il.guyrob.foodsdictionary.Pages;
 
+import il.guyrob.foodsdictionary.Pages.DifferentProductPages.DownloadAppProductPage;
+import il.guyrob.foodsdictionary.Pages.DifferentProductPages.ArticleProductPage;
 import il.guyrob.foodsdictionary.base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -18,13 +20,14 @@ public class HomePage extends base {
     public By btn_hotTopics = By.xpath(hotTopics);
     By btn_hotTopics_next = By.xpath(hotTopics + "/following::span[@class='horz-prev-icon']");
     By list_hotTopics = By.xpath(hotTopics + "/following::div[@class = 'd-flex'][1]//a");
+    public By btn_mobileAppSection = By.xpath("//div[@class='col-12']//a[@href=\"/mobile-app/foods/\"]");
 
 
 
     // functions
     public RecipeProductPage mainBanner_click() {
         driver.findElement(img_banner).click();
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         return new RecipeProductPage();
     }
@@ -47,7 +50,7 @@ public class HomePage extends base {
 
     public RecipeProductPage subBanner_click(List<WebElement> availableProducts, int subBannerProduct) {
         availableProducts.get(subBannerProduct).click();
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         return new RecipeProductPage();
     }
@@ -68,8 +71,16 @@ public class HomePage extends base {
 
     public ArticleProductPage hotTopics_click(List<WebElement> availableProducts, int hotTopicProduct) {
         availableProducts.get(hotTopicProduct).click();
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         return new ArticleProductPage();
+    }
+
+    public DownloadAppProductPage clickAppDownload() {
+        scroll_Element(btn_mobileAppSection);
+        driver.findElement(btn_mobileAppSection).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        return new DownloadAppProductPage();
     }
 }
