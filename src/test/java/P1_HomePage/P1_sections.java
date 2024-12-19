@@ -1,7 +1,9 @@
 package P1_HomePage;
 
+import il.guyrob.foodsdictionary.Pages.DifferentProductPages.DownloadAppProductPage;
+import il.guyrob.foodsdictionary.Pages.DifferentProductPages.ArticleProductPage;
 import il.guyrob.foodsdictionary.Pages.HomePage;
-import il.guyrob.foodsdictionary.Pages.ProductPage;
+import il.guyrob.foodsdictionary.Pages.RecipeProductPage;
 import il.guyrob.foodsdictionary.base;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -15,6 +17,10 @@ public class P1_sections extends base {
 
     // Data
     int subBannerProduct = 2;
+    int hotTopicProduct = 1;
+
+    String googlePlayURL = "play.google";
+    String googlePlayName = "foodsdictionary";
 
     @BeforeMethod
     public void before() {
@@ -33,10 +39,9 @@ public class P1_sections extends base {
     @Test
     public void P1_banner() {
         allure_Log("Clicking main banner");
-        ProductPage productPage = homepage.mainBanner_click();
-        allure_Log("Scrolling down");
+        RecipeProductPage productPage = homepage.mainBanner_click();
+        allure_Log("Scrolling down to title");
         scroll_Element(productPage.list_actions);
-        sleep(1);
         allure_LogAttachment("Banner", "HomePage\\P1", "P1_banner");
         Assert.assertTrue(productPage.isBreadcrumbAppears(), "ERROR: Not showing the banner product page");
     }
@@ -50,20 +55,37 @@ public class P1_sections extends base {
         List<WebElement> availableFoods =  homepage.subBanner_next();
         allure_LogAttachment("Sub Banner Clicked Next Button", "HomePage\\P1", "P2_subBannerProducts_nextBtn");
         allure_Log("Clicking on "+ subBannerProduct +" sub banner food");
-        ProductPage productPage = homepage.subBanner_click(availableFoods , subBannerProduct);
-        allure_Log("Scrolling down");
+        RecipeProductPage productPage = homepage.subBanner_click(availableFoods , subBannerProduct);
+        allure_Log("Scrolling down to title");
         scroll_Element(productPage.list_actions);
-        sleep(1);
         allure_LogAttachment("Sub Banner Selected Product", "HomePage\\P1", "P2_subBannerProducts_product");
         Assert.assertTrue(productPage.isBreadcrumbAppears(), "ERROR: Not showing the sub banner product page");
     }
 
+    @Test
     public void P3_hotTopics() {
-
+        allure_Log("Scrolling to hot topics");
+        homepage.scroll_Element(homepage.btn_hotTopics);
+        allure_Log("On hot topics clicking next button");
+        List<WebElement> availableArticles = homepage.hotTopics_next();
+        allure_LogAttachment("Hot Topics Clicked Next Button", "HomePage\\P1", "P3_hotTopics_nextBtn");
+        allure_Log("Clicking on "+ hotTopicProduct +" topic");
+        ArticleProductPage articleProductPage = homepage.hotTopics_click(availableArticles, hotTopicProduct);
+        allure_Log("Scrolling down to title");
+        scroll_Element(articleProductPage.list_actions);
+        allure_LogAttachment("Hot Topic Selected Product", "HomePage\\P1", "P3_hotTopics_article");
+        String actualURL = getCurrentURL();
+        Assert.assertTrue(actualURL.contains("articles"), "ERROR: Not Showing An Article! (Topic)");
     }
 
+    @Test
     public void P4_appDownload(){
-
+        allure_Log("Scrolling to mobile app download and clicking on it");
+        DownloadAppProductPage downloadAppProductPage = homepage.clickAppDownload();
+        allure_LogAttachment("App Download Page", "HomePage\\P1", "P4_appDownload");
+        downloadAppProductPage.clickDownloadAndroid();
+        allure_LogAttachment("Google Play Store - Foods Download Page", "HomePage\\P1", "P4_appDownload_googlePlay");
+        Assert.assertTrue(getCurrentURL().contains(googlePlayURL) && getCurrentURL().contains(googlePlayName), "ERROR: Not Showing The Correct Google Play Page");
     }
 
     public void P5_books(){

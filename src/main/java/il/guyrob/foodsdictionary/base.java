@@ -107,6 +107,7 @@ public class base {
     public void scroll_Element(By eleBy){
         actions = new Actions(driver);
         actions.scrollToElement(driver.findElement(eleBy)).perform();
+        sleep(1);
     }
 
     public void scroll_XY(int x, int y){
