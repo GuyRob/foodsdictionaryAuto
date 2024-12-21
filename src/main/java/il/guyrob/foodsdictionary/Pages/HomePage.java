@@ -1,5 +1,6 @@
 package il.guyrob.foodsdictionary.Pages;
 
+import il.guyrob.foodsdictionary.Pages.DifferentProductPages.BooksListProductPage;
 import il.guyrob.foodsdictionary.Pages.DifferentProductPages.DownloadAppProductPage;
 import il.guyrob.foodsdictionary.Pages.DifferentProductPages.ArticleProductPage;
 import il.guyrob.foodsdictionary.base;
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class HomePage extends base {
     // locators
-    By img_banner = By.xpath("//div[@class='col-12 col-full']//a"); //remove from start: div[@class='row']
+    By img_banner = By.xpath("//div[@class='col-12 col-full']//a");
     public By btn_subBanner_next = By.xpath("//div[@class = 'col-12-horz']//a[@class='horz-prev']");
     By list_subBanners = By.xpath("(//div[@class = 'col-12-horz']//div[@class = 'd-flex'])[1]//a");
     private final String hotTopics = "//a[@href=\"/channel/\"]//h3[contains(text(), 'נושאים חמים')]";
@@ -21,6 +22,7 @@ public class HomePage extends base {
     By btn_hotTopics_next = By.xpath(hotTopics + "/following::span[@class='horz-prev-icon']");
     By list_hotTopics = By.xpath(hotTopics + "/following::div[@class = 'd-flex'][1]//a");
     public By btn_mobileAppSection = By.xpath("//div[@class='col-12']//a[@href=\"/mobile-app/foods/\"]");
+    public By btn_books = By.xpath("//div[@class='col-12']//a[@href=\"/Recipes/Books/\"]//h3");
 
 
 
@@ -77,10 +79,16 @@ public class HomePage extends base {
     }
 
     public DownloadAppProductPage clickAppDownload() {
-        scroll_Element(btn_mobileAppSection);
         driver.findElement(btn_mobileAppSection).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         return new DownloadAppProductPage();
+    }
+
+    public BooksListProductPage clickBooks() {
+        driver.findElement(btn_books).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        return new BooksListProductPage();
     }
 }
