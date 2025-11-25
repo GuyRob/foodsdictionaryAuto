@@ -1,6 +1,5 @@
 package il.guyrob.foodsdictionary.Pages.DifferentProductPages;
 
-import il.guyrob.foodsdictionary.Pages.RecipeProductPage;
 import org.openqa.selenium.By;
 
 import java.util.concurrent.TimeUnit;

@@ -5,7 +5,7 @@ import il.guyrob.foodsdictionary.Pages.DifferentProductPages.BooksListProductPag
 import il.guyrob.foodsdictionary.Pages.DifferentProductPages.DownloadAppProductPage;
 import il.guyrob.foodsdictionary.Pages.DifferentProductPages.ArticleProductPage;
 import il.guyrob.foodsdictionary.Pages.HomePage;
-import il.guyrob.foodsdictionary.Pages.RecipeProductPage;
+import il.guyrob.foodsdictionary.Pages.DifferentProductPages.RecipeProductPage;
 import il.guyrob.foodsdictionary.base;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -28,6 +28,7 @@ public class P1_sections extends base {
 
     @BeforeMethod
     public void before() {
+        allure_Log("Loading driver");
         initialDriver();
         allure_Log("Loading homepage");
         homepage = new HomePage();

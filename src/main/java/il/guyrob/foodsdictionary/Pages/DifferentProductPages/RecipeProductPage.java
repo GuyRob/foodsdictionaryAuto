@@ -1,4 +1,4 @@
-package il.guyrob.foodsdictionary.Pages;
+package il.guyrob.foodsdictionary.Pages.DifferentProductPages;
 
 import il.guyrob.foodsdictionary.base;
 import org.openqa.selenium.By;

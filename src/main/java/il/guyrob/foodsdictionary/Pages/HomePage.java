@@ -3,6 +3,7 @@ package il.guyrob.foodsdictionary.Pages;
 import il.guyrob.foodsdictionary.Pages.DifferentProductPages.BooksListProductPage;
 import il.guyrob.foodsdictionary.Pages.DifferentProductPages.DownloadAppProductPage;
 import il.guyrob.foodsdictionary.Pages.DifferentProductPages.ArticleProductPage;
+import il.guyrob.foodsdictionary.Pages.DifferentProductPages.RecipeProductPage;
 import il.guyrob.foodsdictionary.base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,10 @@ public class HomePage extends base {
     By list_hotTopics = By.xpath(hotTopics + "/following::div[@class = 'd-flex'][1]//a");
     public By btn_mobileAppSection = By.xpath("//div[@class='col-12']//a[@href=\"/mobile-app/foods/\"]");
     public By btn_books = By.xpath("//div[@class='col-12']//a[@href=\"/Recipes/Books/\"]//h3");
+    public String btn_search2 = "//a[@class='nav-link-search']";
+    public By btn_search = By.xpath("//div[@class='collapse navbar-collapse navbar-search']//a | " + btn_search2);
+
+
 
 
 
@@ -90,5 +95,11 @@ public class HomePage extends base {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         return new BooksListProductPage();
+    }
+
+    public SearchPage searchbar_click() {
+        driver.findElement(btn_search).click();
+
+        return new SearchPage();
     }
 }
