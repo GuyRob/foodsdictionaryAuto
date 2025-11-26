@@ -23,10 +23,42 @@ public class HomePage extends base {
     By list_hotTopics = By.xpath(hotTopics + "/following::div[@class = 'd-flex'][1]//a");
     public By btn_mobileAppSection = By.xpath("//div[@class='col-12']//a[@href=\"/mobile-app/foods/\"]");
     public By btn_books = By.xpath("//div[@class='col-12']//a[@href=\"/Recipes/Books/\"]//h3");
+<<<<<<< Updated upstream
 
 
+=======
+    public String btn_search2 = "//a[@class='nav-link-search']";
+    public By btn_search = By.xpath("//div[@class='collapse navbar-collapse navbar-search']//a | " + btn_search2);
+    public By btn_recipesMenu = By.xpath("//a[@id='navbarCategories']");
+    public By list_recipesMenu = By.xpath("//div[@aria-labelledby='navbarCategories']//a");
+>>>>>>> Stashed changes
 
     // functions
+    // search
+    public SearchPage searchbar_click() {
+        driver.findElement(btn_search).click();
+
+        return new SearchPage();
+    }
+
+    // recipes upper category
+    public void recipesOpenMenu(){
+        clickElement(driver.findElement(btn_recipesMenu));
+    }
+
+    public CategoryPage recipesMenuSelect(String byText){
+
+        List<WebElement> elements = driver.findElements(list_recipesMenu);
+        for (WebElement el : elements){
+            if (el.getText().equalsIgnoreCase(byText)) {
+                el.click();
+            }
+        }
+
+        return new CategoryPage();
+    }
+
+    // banner
     public RecipeProductPage mainBanner_click() {
         driver.findElement(img_banner).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -57,6 +89,7 @@ public class HomePage extends base {
         return new RecipeProductPage();
     }
 
+    // hot topics section
     public List<WebElement> hotTopics_next() {
         driver.findElement(btn_hotTopics_next).click();
         sleep(2);
@@ -91,4 +124,11 @@ public class HomePage extends base {
 
         return new BooksListProductPage();
     }
+<<<<<<< Updated upstream
+=======
+
+
+
+
+>>>>>>> Stashed changes
 }
