@@ -151,8 +151,10 @@ public class base {
      * Allure:
      ===============================*/
     public void allure_Log(String message) {
-        Allure.step(message);
+        String timestamp = java.time.LocalTime.now().withNano(0).toString();
+        Allure.step("[" + timestamp + "] " + message);
     }
+
 
     public static void allure_LogAttachment(String info, String folder, String name) {
         screenShot(folder, name);

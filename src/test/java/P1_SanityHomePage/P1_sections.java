@@ -1,4 +1,4 @@
-package P1_HomePage;
+package P1_SanityHomePage;
 
 import il.guyrob.foodsdictionary.Pages.DifferentProductPages.BookProductPage;
 import il.guyrob.foodsdictionary.Pages.DifferentProductPages.BooksListProductPage;

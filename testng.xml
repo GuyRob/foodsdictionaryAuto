@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
 
-<!--    <test name="P1_HomePage">-->
-<!--        <classes>-->
-<!--            <class name="P1_sections" />-->
-<!--            <class name="P2_search" />-->
-<!--            <class name="P3_blog" />-->
+    <!-- Listener for Allure reports -->
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
 
-<!--            &lt;!&ndash; Add more class elements for other test classes &ndash;&gt;-->
-<!--        </classes>-->
-<!--    </test>-->
+    <!-- Home Page / Sanity Tests -->
+    <test name="P1_SanityHomePage">
+        <classes>
+            <class name="P1_SanityHomePage.P1_sections"/>
+            <class name="P1_SanityHomePage.P2_searchRice"/>
+        </classes>
+    </test>
 
-<!--    <test name="P2_Products">-->
-<!--        <classes>-->
-<!--            <class name="P1_categories" />-->
-<!--            <class name="P2_filters" />-->
-<!--            <class name="P3_layout" />-->
-
-<!--            &lt;!&ndash; Add more class elements for other test classes &ndash;&gt;-->
-<!--        </classes>-->
-<!--    </test>-->
-
-
+    <!-- End-to-End / Ethnic Foods Tests -->
+    <test name="P2_E2E">
+        <classes>
+            <class name="P2_E2E.P1EthnicFoodsCategoryTest"/>
+        </classes>
+    </test>
 
 </suite>

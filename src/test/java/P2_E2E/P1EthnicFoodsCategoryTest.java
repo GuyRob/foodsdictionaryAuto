@@ -1,3 +1,5 @@
+package P2_E2E;
+
 import il.guyrob.foodsdictionary.Pages.CategoryPage;
 import il.guyrob.foodsdictionary.Pages.HomePage;
 import il.guyrob.foodsdictionary.Pages.SearchPage;
