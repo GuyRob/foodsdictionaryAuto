@@ -302,38 +302,6 @@ mvn test
 
 ---
 
-## 🍽️ From Food Search to Automated Validation
 
-```text
-     🔎 SEARCH
-         │
-         ▼
-    🍲 FOOD / RECIPE
-         │
-         ▼
-     📖 DETAILS
-         │
-         ▼
-    🥗 NUTRITION
-         │
-         ▼
-      🔗 LINKS
-         │
-         ▼
-    🧪 AUTOMATED TEST
-         │
-         ▼
-    📊 ALLURE REPORT
-```
-
----
-
-<p align="center">
-
-### 🧪 Automate. Validate. Report. Repeat.
-
-**Java • Selenium • Playwright • TestNG • Maven • Allure**
-
-🍽️ **Foodsdictionary Automation** 🍽️
 
 </p>
