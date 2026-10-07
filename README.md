@@ -302,6 +302,16 @@ mvn test
 
 ---
 
+---
 
+# 🃏 Allure Reports
+
+<div align="center">
+
+| V1 - https://f2h.io/9gab5y9doomi |
+
+</div>
+
+---
 
 </p>
