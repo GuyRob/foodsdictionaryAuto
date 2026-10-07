@@ -1,33 +1,31 @@
 package P1_SanityHomePage;
 
-import il.guyrob.foodsdictionary.Pages.HomePage;
-import il.guyrob.foodsdictionary.Pages.CategoryPage;
-import il.guyrob.foodsdictionary.Pages.SearchPage;
+import il.guyrob.foodsdictionary.Selenium.Pages.SeleHomePage;
+import il.guyrob.foodsdictionary.Selenium.Pages.SeleCategoryPage;
+import il.guyrob.foodsdictionary.Selenium.Pages.SeleSearchPage;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-import il.guyrob.foodsdictionary.base;
+import il.guyrob.foodsdictionary.Selenium.SelenBase;
 
-public class P2_searchRice extends base{
-    HomePage homepage;
-    SearchPage searchPage;
-    CategoryPage categoryPage;
+public class P2_searchRice extends SelenBase {
+    SeleHomePage homepage;
+    SeleSearchPage searchPage;
+    SeleCategoryPage categoryPage;
 
     // Data
     String searchRiceStr = "אורז";
 
-    @BeforeMethod
+    @BeforeClass
     public void before() {
         allure_Log("Loading driver");
         initialDriver();
         allure_Log("Loading homepage");
-        homepage = new HomePage();
+        homepage = new SeleHomePage();
         allure_LogAttachment("Before Test", "HomePage\\P2", "before");
     }
 
-    @AfterMethod
+    @AfterClass
     public void after() {
         allure_Log("Closing driver");
         quitDriver();

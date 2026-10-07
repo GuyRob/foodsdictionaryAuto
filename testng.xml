@@ -1,25 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
 
-    <!-- Listener for Allure reports -->
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
 
-    <!-- Home Page / Sanity Tests -->
-    <test name="P1_SanityHomePage">
-        <classes>
-            <class name="P1_SanityHomePage.P1_sections"/>
-            <class name="P1_SanityHomePage.P2_searchRice"/>
-        </classes>
-    </test>
-
-    <!-- End-to-End / Ethnic Foods Tests -->
-    <test name="P2_E2E">
-        <classes>
-            <class name="P2_E2E.P1EthnicFoodsCategoryTest"/>
-        </classes>
+    <test name="Run_All_Tests">
+        <packages>
+            <package name="P1_SanityHomePage"/>
+            <package name="P2_E2E"/>
+        </packages>
     </test>
 
 </suite>
+
+
+        <!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">-->
+<!--<suite name="All Test Suite">-->
+
+<!--    &lt;!&ndash; Listener for Allure reports &ndash;&gt;-->
+<!--    <listeners>-->
+<!--        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>-->
+<!--    </listeners>-->
+
+<!--    &lt;!&ndash; Home Page / Sanity Tests &ndash;&gt;-->
+<!--    <test name="P1_SanityHomePage">-->
+<!--        <classes>-->
+<!--            <class name="P1_SanityHomePage.P1_sections"/>-->
+<!--            <class name="P1_SanityHomePage.P2_searchRice"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    &lt;!&ndash; End-to-End / Ethnic Foods Tests &ndash;&gt;-->
+<!--    <test name="P2_E2E">-->
+<!--        <classes>-->
+<!--            <class name="P2_E2E.P1EthnicFoodsCategoryTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--</suite>-->
